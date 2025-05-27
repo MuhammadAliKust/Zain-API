@@ -62,10 +62,10 @@ class _LoginViewState extends State<LoginView> {
                               email: emailController.text,
                               password: pwdController.text)
                           .then((val) async {
+                        userProvider.setToken(val.token.toString());
                         await AuthServices()
                             .getProfile(val.token.toString())
                             .then((userData) {
-                          userProvider.setUser(userData);
                           isLoading = false;
                           setState(() {});
                           showDialog(
