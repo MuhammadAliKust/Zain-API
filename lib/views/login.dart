@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:zain_api/providers/user.dart';
 import 'package:zain_api/services/auth.dart';
+import 'package:zain_api/views/get_all_task.dart';
 import 'package:zain_api/views/profile.dart';
 import 'package:zain_api/views/register.dart';
 
@@ -81,7 +82,7 @@ class _LoginViewState extends State<LoginView> {
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                      ProfileView()));
+                                                      GetAllTaskView()));
                                         },
                                         child: Text("Okay"))
                                   ],
