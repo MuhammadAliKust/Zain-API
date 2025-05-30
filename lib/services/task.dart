@@ -113,4 +113,45 @@ class TaskServices {
       throw e.toString();
     }
   }
+
+
+  ///Delete Task
+  Future<bool> deleteTask(
+      {required String token, required String taskID}) async {
+    try {
+      http.Response response = await http.delete(
+          Uri.parse('$baseURL/todos/delete/$taskID'),
+          headers: {'Authorization': token});
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return true;
+      } else {
+        throw response.reasonPhrase.toString();
+      }
+    } catch (e) {
+      throw e.toString();
+    }
+  }
+
+
+  ///Update Task
+  Future<bool> updateTask(
+      {required String token,
+        required String taskID,
+        required String description}) async {
+    try {
+      http.Response response = await http.patch(
+          Uri.parse('$baseURL/todos/update/$taskID'),
+          headers: {'Authorization': token, 'Content-Type': 'application/json'},
+          body: jsonEncode({'description': description}));
+
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        return true;
+      } else {
+        throw response.reasonPhrase.toString();
+      }
+    } catch (e) {
+      throw e.toString();
+    }
+  }
 }
