@@ -5,8 +5,10 @@ import 'package:zain_api/models/task.dart';
 import 'package:zain_api/models/task_listing.dart';
 import 'package:zain_api/services/task.dart';
 import 'package:zain_api/views/create_task.dart';
+import 'package:zain_api/views/filter_task.dart';
 import 'package:zain_api/views/get_completed_task.dart';
 import 'package:zain_api/views/get_inCompleted_task.dart';
+import 'package:zain_api/views/search_task.dart';
 import 'package:zain_api/views/update_task.dart';
 
 import '../providers/user.dart';
@@ -28,6 +30,18 @@ class _GetAllTaskViewState extends State<GetAllTaskView> {
       appBar: AppBar(
         title: Text("Get All Task"),
         actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => SearchTaskView()));
+              },
+              icon: Icon(Icons.search)),
+          IconButton(
+              onPressed: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => FilterTaskView()));
+              },
+              icon: Icon(Icons.filter)),
           IconButton(
               onPressed: () {
                 Navigator.push(
